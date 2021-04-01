@@ -47,8 +47,12 @@ body {
 		}
 	}
 
-	tr {
+	tbody tr {
 		border-bottom: 1px solid v.$color-light-gray;
+
+		&:hover {
+			background-color: color.scale(#fff, $lightness: -10%);
+		}
 
 		&:last-child {
 			border-bottom: 0;
