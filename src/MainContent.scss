@@ -1,9 +1,14 @@
+@use "sass:color";
 @use "variables" as v;
 
 .sidebar {
 	&__discord {
-		background-color: #607cda;
+		background-color: v.$color-discord;
 		padding: 0;
+
+		&:hover {
+			background-color: color.scale(v.$color-discord, $lightness: 10%);
+		}
 
 		a {
 			display: flex;
