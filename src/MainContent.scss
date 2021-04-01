@@ -1,0 +1,44 @@
+@use "variables" as v;
+
+.sidebar {
+	&__discord {
+		background-color: #607cda;
+		padding: 0;
+
+		a {
+			display: flex;
+			border-radius: v.$section-border-radius;
+			justify-content: center;
+			padding: 1rem;
+			margin: auto;
+			text-decoration: none;
+			color: #fff;
+		}
+
+		&__logo {
+			font-size: 3rem;
+			margin-right: 1rem;
+		}
+
+		&__title {
+			font-size: 2rem;
+			font-weight: bold;
+		}
+	}
+}
+
+.main-content {
+	display: flex;
+
+	> section, .sidebar__wrapper {
+		flex-grow: 1;
+	}
+
+	@media (max-width: v.$bp-md) {
+		flex-flow: column;
+	}
+
+	> section {
+		flex-basis: 60%;
+	}
+}

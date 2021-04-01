@@ -1,0 +1,15 @@
+@use "sass:color";
+
+$color-gray: color.scale(#000, $lightness: 50%);
+$color-light-gray: color.scale(#000, $lightness: 75%);
+$color-red: #ec173c;
+$color-orange: #fe9731;
+$color-blue: #0c4fbf;
+$bp-xs: 500px;
+$bp-sm: 640px;
+$bp-md: 768px;
+$bp-lg: 1024px;
+$bp-xl: 1280px;
+$section-border-radius: 1rem;
+$section-padding: 1rem;
+$section-padding-sm: 0.5rem;

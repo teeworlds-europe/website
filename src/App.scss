@@ -1,0 +1,57 @@
+@use "sass:color";
+@use "reset";
+@use "variables" as v;
+@use "fonts";
+
+body {
+	background: v.$color-blue;
+}
+
+#root {
+	max-width: 70rem;
+	margin: 0.5rem auto;
+	font-family: Lato, sans-serif;
+}
+
+.content-section {
+	margin: 0 0.5rem 1rem 0.5rem;
+	box-shadow: 0px 2px 5px 1px color.scale(#000, $alpha: -50%);
+	border-radius: v.$section-border-radius;
+	padding: v.$section-padding;
+	background: #fff;
+
+	@media (max-width: v.$bp-sm) {
+		margin: 0 0.25rem 1rem 0.25rem;
+		padding: v.$section-padding-sm;
+	}
+}
+
+.table {
+	width: 100%;
+	border-collapse: collapse;
+
+	thead th {
+		border-bottom: 1px solid v.$color-gray;
+	}
+
+	th {
+		font-weight: bold;
+	}
+
+	th, td {
+		padding: 0.25rem 0.5rem;
+		text-align: left;
+
+		@media (max-width: v.$bp-sm) {
+			padding: 0.25rem 0.25rem;
+		}
+	}
+
+	tr {
+		border-bottom: 1px solid v.$color-light-gray;
+
+		&:last-child {
+			border-bottom: 0;
+		}
+	}
+}

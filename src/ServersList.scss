@@ -1,0 +1,16 @@
+@use "variables" as v;
+
+.servers-list {
+	tbody tr:hover {
+		background: v.$color-light-gray;
+		cursor: pointer;
+	}
+
+	th {
+		font-weight: normal;
+	}
+
+	thead th {
+		font-weight: bold;
+	}
+}

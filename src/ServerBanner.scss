@@ -1,0 +1,177 @@
+@use "sass:color";
+@use "variables" as v;
+
+.server-banner {
+	$section-padding: 0.5rem;
+	padding: $section-padding;
+
+	dl {
+		display: grid;
+
+		@media (max-width: v.$bp-md) {
+			display: flex;
+			flex-flow: column wrap;
+		}
+	}
+
+	&__name {
+		grid-area: 1 / 1 / span 3 / auto;
+
+		div {
+			display: flex;
+			align-items: flex-start;
+
+			p {
+				display: inline;
+			}
+
+			@media (max-width: v.$bp-md) {
+				display: inline;
+			}
+		}
+
+		img {
+			display: none
+		}
+	}
+
+	&__mode {
+		grid-area: 1 / 2 / auto / auto;
+	}
+
+	&__players {
+		grid-area: 2 / 2 / auto / auto;
+	}
+
+	&__address {
+		grid-area: 3 / 2 / auto / auto;
+	}
+
+	&__best {
+		grid-area: 1 / 3 / span 3 / auto;
+	}
+
+	&__score {
+		grid-area: 1 / 4 / span 3 / auto;
+	}
+
+	&__details {
+		grid-area: 1 / 5 / span 3 / auto;
+	}
+
+	dt:after {
+		content: ": ";
+	}
+
+	dt {
+		color: v.$color-gray;
+		text-transform: uppercase;
+		line-height: 1.5rem;
+		font-size: 0.75rem;
+		margin-bottom: 0.5rem;
+	}
+
+	dd {
+		font-weight: bold;
+		font-size: 1rem;
+		line-height: 1.25rem;
+	}
+
+	@media (max-width: v.$bp-md) {
+		dt, dd {
+			display: inline;
+			font-size: 0.75rem;
+		}
+	}
+
+	&__score dd {
+		color: v.$color-red;
+	}
+
+	div#{&}__details {
+		height: unset;
+		margin: auto;
+
+		@media (max-width: v.$bp-md) {
+			margin-left: 0;
+			margin-right: auto;
+			margin-top: 0.25rem;
+		}
+
+		@media (max-width: v.$bp-sm) {
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		a {
+			display: block;
+			border-radius: 1rem;
+			font-size: 0.75rem;
+			font-weight: bold;
+			text-decoration: none;
+			text-transform: uppercase;
+			color: #fff;
+			padding: 0.75rem 1.5rem;
+			background: v.$color-red;
+
+			&:hover {
+				background: color.scale(v.$color-red, $lightness: 30%);
+			}
+		}
+	}
+
+	@media (width > v.$bp-md) {
+		div#{&}__name {
+			position: relative;
+			right: $section-padding;
+			bottom: $section-padding;
+			padding: $section-padding;
+			border-radius: v.$section-border-radius 0 0 v.$section-border-radius;
+			background: v.$color-orange;
+
+			dt, dd {
+				color: #fff;
+				position: relative;
+				left: 0.5rem;
+			}
+
+			dt {
+				margin-left: 2rem;
+			}
+
+			dd img {
+				display: inline;
+				position: relative;
+				top: 0.1rem;
+				margin-right: 0.5rem;
+			}
+		}
+	}
+
+	&__mode, &__players, &__address {
+		dt, dd {
+			display: inline;
+			font-size: 0.75rem;
+		}
+	}
+
+	div {
+		margin: 0;
+		padding: 0 0.75rem;
+		height: 100%;
+		text-align: left;
+		border-right: 1px solid v.$color-light-gray;
+
+		@media (max-width: v.$bp-md) {
+			padding: 0 0.5rem;
+			flex-basis: 100%;
+			border-right: 0;
+			border-bottom: 1px solid v.$color-gray;
+		}
+
+		&:last-child {
+			border-right: 0;
+			border-bottom: 0;
+		}
+	}
+}

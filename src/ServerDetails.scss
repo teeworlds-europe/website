@@ -1,0 +1,36 @@
+@use "./variables" as v;
+
+.server-details {
+	h1 {
+		margin-bottom: 1rem;
+		font-size: 1.25rem;
+		font-weight: bold;
+	}
+
+	section {
+		margin-bottom: 1rem;
+	}
+
+	dl {
+		> div {
+			padding: 0.25rem 0;
+			border-bottom: 1px solid v.$color-light-gray;
+
+			&:last-child {
+				border-bottom: 0;
+			}
+
+			dt {
+				color: v.$color-gray;
+
+				&:after {
+					content: ": ";
+				}
+			}
+
+			dt, dd {
+				display: inline;
+			}
+		}
+	}
+}
