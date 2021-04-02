@@ -2,25 +2,21 @@ import { html } from "htm/preact";
 import "./ServerDetails.scss";
 
 interface ServerDetailsProps extends ServersProps {
-	match: {
-		params: {
-			server: string,
-			port: string,
-		}
-	}
+	address: string,
+	port: string,
 }
 
 const ServerDetails = (props: ServerDetailsProps) => {
 	let server: undefined | Server = props.servers.filter((server) =>
-		server.address == props.match.params.server && server.port === Number(props.match.params.port)
+		server.address == props.address && server.port === Number(props.port)
 	).pop();
 	if (!server) {
-		return html`No server "${props.match.params.server}:${props.match.params.port}" has been found!`;
+		return html`No server "${props.server}:${props.port}" has been found!`;
 	}
+	server.clients = server.clients || [];
 
 	return html`
-		<section>
-			<h1>Server details</h1>
+		<section class="content-section server-details__details">
 			<dl>
 				<div>
 					<dt>Server name</dt>
@@ -60,8 +56,7 @@ const ServerDetails = (props: ServerDetailsProps) => {
 				</div>
 			</dl>
 		</section>
-		<section>
-			<h1>Players</h1>
+		<section class="content-section server-details__players">
 			<table class="table">
 				<thead>
 					<tr>

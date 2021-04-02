@@ -1,6 +1,9 @@
 @use "variables" as v;
 
 .latest-news {
+	flex-basis: 60%;
+	flex-grow: 1;
+
 	header {
 		display: flex;
 		align-items: center;

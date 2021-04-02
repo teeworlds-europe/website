@@ -1,36 +1,32 @@
 @use "./variables" as v;
 
 .server-details {
-	h1 {
-		margin-bottom: 1rem;
-		font-size: 1.25rem;
-		font-weight: bold;
-	}
+	&__details {
+		flex: 1 1 20%;
 
-	section {
-		margin-bottom: 1rem;
-	}
+		dl {
+			> div {
+				padding: 0.5rem 0;
+				border-bottom: 1px solid v.$color-light-gray;
 
-	dl {
-		> div {
-			padding: 0.25rem 0;
-			border-bottom: 1px solid v.$color-light-gray;
+				&:last-child {
+					border-bottom: 0;
+				}
 
-			&:last-child {
-				border-bottom: 0;
-			}
+				dt {
+					color: v.$color-gray;
+					font-weight: bold;
+					margin-bottom: 0.5rem;
+				}
 
-			dt {
-				color: v.$color-gray;
-
-				&:after {
-					content: ": ";
+				dt, dd {
+					margin-left: 1rem;
 				}
 			}
-
-			dt, dd {
-				display: inline;
-			}
 		}
+	}
+
+	&__players {
+		flex: 1 1 60%;
 	}
 }

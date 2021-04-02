@@ -1,15 +1,9 @@
 @use "variables" as v;
 
 .servers-list {
+	flex-grow: 1;
+
 	tbody tr:hover {
 		cursor: pointer;
-	}
-
-	th {
-		font-weight: normal;
-	}
-
-	thead th {
-		font-weight: bold;
 	}
 }

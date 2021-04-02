@@ -1,12 +1,11 @@
 import { html } from "htm/preact";
+import useLocation from "wouter-preact/use-location";
 import IconOnline from "./images/icon-online.svg";
 import IconOffline from "./images/icon-offline.svg";
 import "./ServersList.scss";
 
 const ServersList = (props: ServersProps) => {
-	const switchRoute = (location: string) => {
-		props.history.push(location);
-	};
+	const [location, setLocation] = useLocation();
 
 	return html`<table class="table">
 		<thead>
@@ -38,7 +37,7 @@ const ServersList = (props: ServersProps) => {
 						return html`
 							<tr
 								key=${server.address + "/" + server.port.toString()}
-								onclick=${() => switchRoute("/servers/" + server.address + "/" + server.port.toString())}
+								onclick=${() => setLocation("/servers/" + server.address + "/" + server.port.toString())}
 							>
 								<th scope="row">${name}</th>
 								<td>${

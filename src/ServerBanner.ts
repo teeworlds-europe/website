@@ -1,10 +1,11 @@
 import { html } from "htm/preact";
 import { useState, useEffect } from "preact/hooks";
-import { Link } from "react-router-dom";
+import useLocation from "wouter-preact/use-location";
 import IconOnline from "./images/icon-online.svg";
 import "./ServerBanner.scss";
 
 const ServerBanner = (props: ServersProps) => {
+	const [location, setLocation] = useLocation();
 	const [server, setTopServer] = useState({
 		name: "-",
 		gametype: "-",
@@ -72,10 +73,10 @@ const ServerBanner = (props: ServersProps) => {
 			<dd>${server.score}</dd>
 		</div>
 		<div class="server-banner__details">
-			<${Link} to=${server.address
+			<a onclick=${() => setLocation(server.address
 				? `/servers/${server.address}/${server.port}`
 				: "#"
-			}>More details</${Link}>
+			)}>More details</a>
 		</div>
 	</dl>`;
 };

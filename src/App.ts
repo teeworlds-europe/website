@@ -1,10 +1,6 @@
 import { html } from "htm/preact";
 import { useState, useEffect } from "preact/hooks";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
+import useLocation from "wouter-preact/use-location";
 import "./App.scss";
 import ServerBanner from "./ServerBanner";
 import MainContent from "./MainContent";
@@ -16,6 +12,7 @@ import { fetchServers } from "./utils";
 
 const App = () => {
 	const [servers, setServers] = useState([]);
+	const [location, setLocation] = useLocation();
 
 	useEffect(() => {
 		(async () => {
@@ -23,34 +20,37 @@ const App = () => {
 		})();
 	}, []);
 
-	return html`<${Router}>
+	const renderContent = () => {
+		let matched;
+		if (
+			matched = /^\/servers\/(?<address>[^\/]+)\/(?<port>[^\/]+)$/
+				.exec(location)
+		) {
+			return html`<${ServerDetails}
+				servers=${servers}
+				address=${matched.groups.address}
+				port=${matched.groups.port}
+			/>`;
+		} else if (location === "/servers") {
+			return html`<section class="content-section servers-list">
+				<${ServersList} servers=${servers}/>
+			</section>`;
+		} else {
+			return html`<section class="content-section latest-news">
+				<${LatestNews}/>
+			</section>`;
+		}
+	}
+
+	return html`
 		<section class="navbar"><${Navbar}/></section>
 		<section class="content-section server-banner">
 			<${ServerBanner} servers=${servers}/>
 		</section>
 		<${MainContent}>
-			<${Switch}>
-				<${Route}
-					path="/servers/:server/:port"
-					render=${(props: {}) => html`<section class="content-section server-details">
-						<${ServerDetails} ...${props} servers=${servers}/>
-					</section>`}
-				/>
-				<${Route}
-					path="/servers"
-					render=${(props: {}) => html`<section class="content-section servers-list">
-						<${ServersList} ...${props} servers=${servers}/>
-					</section>`}
-				/>
-				<${Route}
-					path="/"
-					render=${(props: {}) => html`<section class="content-section latest-news">
-						<${LatestNews} ...${props}/>
-					</section>`}
-				/>
-			</${Switch}>
+			${renderContent()}
 		</${MainContent}>
-	</${Router}>`;
+	`;
 };
 
 export default App;

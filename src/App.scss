@@ -1,16 +1,19 @@
 @use "sass:color";
 @use "reset";
 @use "variables" as v;
-@use "fonts";
 
 body {
 	background: v.$color-blue;
 }
 
+a {
+	cursor: pointer;
+}
+
 #root {
 	max-width: 70rem;
 	margin: 0.5rem auto;
-	font-family: Lato, sans-serif;
+	font-family: Sans-Serif;
 }
 
 .content-section {
@@ -32,9 +35,7 @@ body {
 
 	thead th {
 		border-bottom: 1px solid v.$color-gray;
-	}
-
-	th {
+		color: v.$color-gray;
 		font-weight: bold;
 	}
 
@@ -50,8 +51,12 @@ body {
 	tbody tr {
 		border-bottom: 1px solid v.$color-light-gray;
 
-		&:hover {
+		&:nth-child(2n) {
 			background-color: color.scale(#fff, $lightness: -10%);
+		}
+
+		&:hover {
+			background-color: color.scale(#fff, $lightness: -20%);
 		}
 
 		&:last-child {
