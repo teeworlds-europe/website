@@ -24,11 +24,7 @@ const ServerDetails = (props: ServerDetailsProps) => {
 				</div>
 				<div>
 					<dt>Address</dt>
-					<dd>${server.address}</dd>
-				</div>
-				<div>
-					<dt>Port</dt>
-					<dd>${server.port}</dd>
+					<dd>${server.address}:${server.port}</dd>
 				</div>
 				<div>
 					<dt>Game mode</dt>

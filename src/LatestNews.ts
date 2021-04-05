@@ -14,7 +14,6 @@ const articles = [
 
 const Article = (props: Props) => {
 	return html`<article key=${props.title + props.date}>
-		<img alt="article header" src=${props.image}/>
 		<div>
 			<h1>${props.title}</h1>
 			<p><small><date datetime=${props.date}>${props.date}</date></small></p>

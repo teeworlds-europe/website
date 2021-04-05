@@ -3,7 +3,13 @@
 .servers-list {
 	flex-grow: 1;
 
-	tbody tr:hover {
-		cursor: pointer;
+	tbody {
+		th {
+			overflow-wrap: anywhere;
+		}
+
+		tr:hover {
+			cursor: pointer;
+		}
 	}
 }
